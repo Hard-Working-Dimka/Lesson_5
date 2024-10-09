@@ -89,15 +89,15 @@ def main():
     os.makedirs('generated_cards', exist_ok=True)
     fake_data = Faker('ru_RU')
 
-    runic_SKILLS = []
+    runic_skills = []
     for skill in SKILLS:
         for letter in skill:
             skill = skill.replace(letter, ALPHABET[letter])
-        runic_SKILLS.append(skill)
+        runic_skills.append(skill)
 
     for card in range(QUANTITY_OF_CARDS):
-        chosen_SKILLS = random.sample(runic_SKILLS, 3)
-        names = {
+        chosen_skills = random.sample(runic_skills, 3)
+        attributes = {
             'first_name': fake_data.first_name(),
             'last_name': fake_data.last_name(),
             'job': fake_data.job(),
@@ -107,12 +107,12 @@ def main():
             'endurance': random.randint(3, 18),
             'intelligence': random.randint(3, 18),
             'luck': random.randint(3, 18),
-            'skill_1': chosen_SKILLS[0],
-            'skill_2': chosen_SKILLS[1],
-            'skill_3': chosen_SKILLS[2],
+            'skill_1': chosen_skills[0],
+            'skill_2': chosen_skills[1],
+            'skill_3': chosen_skills[2],
         }
         file_operations.render_template(os.path.join('template_of_card', 'charsheet.svg'),
-                                        os.path.join('generated_cards', 'card_{0}.svg').format(card), names)
+                                        os.path.join('generated_cards', 'card_{0}.svg').format(card), attributes)
 
 
 if __name__ == '__main__':
