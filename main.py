@@ -7,8 +7,7 @@ QUANTITY_OF_CARDS = 10
 
 
 def main():
-    if not os.path.exists('generated_cards'):
-        os.makedirs('generated_cards')
+    os.makedirs('generated_cards', exist_ok=True)
     fake_data = Faker('ru_RU')
 
     alphabet = {
