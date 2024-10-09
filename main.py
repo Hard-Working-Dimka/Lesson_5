@@ -113,8 +113,8 @@ def main():
             'skill_2': chosen_skills[1],
             'skill_3': chosen_skills[2],
         }
-        file_operations.render_template('template_of_card\\charsheet.svg',
-                                        'generated_cards\\card_{0}.svg'.format(card), names)
+        file_operations.render_template(os.path.join('template_of_card', 'charsheet.svg'),
+                                        os.path.join('generated_cards', 'card_{0}.svg').format(card), names)
 
 
 if __name__ == '__main__':
